@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Background from "./components/background/Background";
 import Navbar from "./components/navbar/Navbar";
+import Hero from "./components/hero/Hero";
 
 const App = () => {
   let heroData = [
@@ -13,10 +14,22 @@ const App = () => {
 
   const [playStatus, setPlayStatus] = useState(false);
 
+  useEffect(() => {
+    setInterval(() => {
+      setHeroCount((count) => (count === 2 ? 0 : count + 1));
+    }, 3000);
+  }, []);
   return (
     <div>
       <Background playStatus={playStatus} heroCount={heroCount} />
       <Navbar />
+      <Hero
+        setPlayStatus={setPlayStatus}
+        heroData={heroData[heroCount]}
+        heroCount={heroCount}
+        setHeroCount={setHeroCount}
+        playStatus={playStatus}
+      />
     </div>
   );
 };

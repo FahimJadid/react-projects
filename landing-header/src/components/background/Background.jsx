@@ -10,13 +10,17 @@ const images = [image1, image2, image3];
 const Background = ({ playStatus, heroCount }) => {
   if (playStatus) {
     return (
-      <video className="background" autoPlay loop muted>
+      <video className="background fade-in" autoPlay loop muted>
         <source src={video1} type="video/mp4" />
       </video>
     );
   } else {
     return (
-      <img className="background" src={images[heroCount]} alt="background" />
+      <img
+        className="background fade-in"
+        src={images[heroCount]}
+        alt="background"
+      />
     );
   }
 
